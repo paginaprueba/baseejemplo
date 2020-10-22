@@ -1,0 +1,157 @@
+---
+#title: Tarea 01\\ Análisis de datos multivariados
+author:
+ - Adriana Haydeé Contreras Peruyero\and
+ - Alejandro Jiménez Palestino\and
+ - Andrés Peña Montalvo\and
+ - Arturo Sánchez González\and
+ - Jesus Alberto Urrutia Camacho
+header-includes:
+  - \usepackage{array}
+  - \usepackage{booktabs}
+  - \usepackage{amsmath}
+  - \usepackage{amssymb}
+  - \usepackage{mathtools}
+  - \usepackage{braket}
+  - \usepackage[shortlabels]{enumitem}
+  - \usepackage[spanish]{babel}
+  - \decimalpoint
+  - \usepackage{graphicx}
+  - \usepackage{caption}
+  - \renewcommand{\and}{\\}
+  - \renewcommand{\arraystretch}{1.2}
+  - \usepackage{booktabs}
+  - \usepackage{float}
+  - \usepackage[font=small,labelfont=bf]{caption}
+  - \usepackage{fancyhdr}
+  - \newcommand{\mb}[1]{\mathbb{#1}}
+output: pdf_document
+---
+
+<!-- El siguiente código sirve para poner el logo del encabezado. -->
+\pagestyle{fancy}
+\fancyhf{}
+
+\rhead{\begin{picture}(0,0) 
+\put(-40,-20)
+{\includegraphics[width=30mm]
+{images/iimas}} 
+\end{picture}}
+
+\renewcommand{\headrulewidth}{0pt}
+\rfoot[\thepage]{\vspace{-0.5cm} \thepage}
+
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r include = FALSE, echo = FALSE}
+##  LIBRERÍAS
+# Aquí vamos a incluir las librerías que necesitemos
+# En donde se pongan pedazos de código, únicamente se comentará
+# Es BUENA PRÁCTICA poner las librerías al principio, por ello las ponemos aquí
+# library(library_name)
+```
+
+
+ \begin{center}
+ \bigskip 
+ \textbf{\Large Tarea 01 \\ Análisis de datos multivariados}
+ \end{center}
+ 
+ - Adriana Haydeé Contreras Peruyero\and
+ - Alejandro Jiménez Palestino\and
+ - Andrés Peña Montalvo\and
+ - Arturo Sánchez González\and
+ - Jesus Alberto Urrutia Camacho
+
+
+## Parte 1. Exploración gráfica y datos faltantes
+
+La base de datos `Mexico_bienestar.csv` contiene 33 indicadores de bienestar de todas las entidades federativas y los valores registrados a nivel nacional en el censo del 2015. En el archivo `Variables_bienestar_México.docx` se encuentra explicado cómo se obtuvo cada uno de estos indicadores.(Fuente: [https://www.inegi.org.mx/app/bienestar/])
+Muestra la respuesta a continuación de cada pregunta y explica los valores o gráficos que muestres. No muestres toda la salida de R, sólo lo necesario para responder a cada pregunta. Puedes utilizar tablas, notas al pie de la figura, etc. Además de tu archivo PDF, sube el código completo (en .txt o .R) y el archivo con datos que utilizaste (en.csv o .txt).
+
+  1. Indica las escalas (nominal, ordinal, absoluta, intervalo, radio) en las que se han medido las siguientes variables:
+  
+  - Satisfacción con la vida
+  - Contaminación del aire
+  - Habitaciones por persona
+  - Esperanza de vida al nacer
+  - Habilidades de los estudiantes
+  - Salud autorreportada
+  - Tasa de obesidad
+  - Satisfacción con tiempo para ocio
+  
+  
+  2. Explora la base de datos e indica el número de valores faltantes, así como las variables y las entidades federativas a las que corresponden dichos valores, y responde: ¿Qué tipo de mecanismo de pérdida crees que le corresponde a los datos faltantes de esta base de datos?
+  3. Deberás de darle algún tratamiento a esos datos faltantes para poder continuar (imputar datos, eliminar casos,…). Realiza ese tratamiento y justifícalo.
+*Si imputaste datos, cómo lo hiciste y qué valores fueron? Si eliminaste casos, cómo lo hiciste y qué casos fueron?
+  4. Para las siguientes variables:
+   - Percepción.de.ausencia.de.corrupción.en.el.sistema.judicial,
+   - Tasa.de.mortalidad.materna, y
+   - Viviendas.con.acceso.a.servicios.básicos,
+  muestra graficada la función empírica de distribución (ecdf), boxplot, Normal qq-plot e histograma. *Describe con detalle y explica* tus gráficas. ¿Qué relación encuentras entre los ecdf’s y los boxplots que graficaste? ¿Cuál de estas variables tiene sesgo negativo? ¿Cuál de estas variables tiene sesgo positivo? ¿Alguna de estas variables tiene distribución aproximadamente Normal?
+  5. Con la base sin datos faltantes, calcula la matriz de correlaciones (R) .Muéstrala.
+  6. Con la base sin datos faltantes, calcula el vector de medias. Muéstralo.
+  7. Con la base sin datos faltantes, calcula la matriz de varianzas y covarianzas (S). Muéstrala.
+  8. Indica entre que pares de variables hay mayor correlación y entre que pares de variables hay menos correlación.
+  9. Indica las 3 variables con mayor variabilidad y las 3 variables con menor variabilidad.
+  10. Genera al menos 2 gráficos multivariados para comparar las entidades federativas. ¿Cuáles se parecen menos? Si tuvieras que formar grupos de universidades ¿Cuáles formarías y por qué?
+  
+---
+
+## Parte 2. Datos faltantes
+
+Consulta libros, artículos y bibliografía seria, y completa la siguiente tabla. Anota las referencias al final.
+
+\begin{table}[h]
+\centering
+\resizebox{\textwidth}{!}{
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Tratamiento de datos faltantes} & \textbf{¿En qué consiste?} & \multicolumn{1}{c|}{\textbf{\begin{tabular}[c]{@{}c@{}}¿En qué casos se recomienda\\ usarlo? (datos perdidos tipo\\ MCAR, MAR, MNAR)\end{tabular}}} \\ \hline
+\textbf{Omisión Total} &  &  \\ \hline
+\textbf{Omisión Parcial} &  &  \\ \hline
+\textbf{Imputación con la Media} &  &  \\ \hline
+\textbf{Imputación Hot Deck} &  &  \\ \hline
+\textbf{Imputación usando regresión} &  &  \\ \hline
+\textbf{Imputación usando Algoritmo EM} &  &  \\ \hline
+\textbf{Imputación múltiple} &  &  \\ \hline
+\end{tabular}
+}
+\end{table}
+
+---
+
+## Parte 3. Algebra de matrices (1.5 puntos)
+Considera la siguiente matriz. Para cada uno de los incisos, muestra las operaciones que realizaste para justificar tu respuesta.
+
+\[
+    A = \begin{pmatrix}
+          6 & 4 & 0 \\
+          4 & 6 & 0 \\
+          0 & 0 & 6
+    \end{pmatrix}
+\]
+
+\begin{enumerate}[(a)]
+  \item \label{parte3.01} Obtener los valores propios (calcule el polinomio característico) y los vectores asociados a cada uno de dichos valores propios.
+  \item \label{parte3.02} ¿Es $A$ una matriz idempotente?
+  \item \label{parte3.03} ¿Es $A$ una matriz no singular?
+  \item \label{parte3.04} ¿Cuánto vale la traza de la matriz $A$?
+  \item \label{parte3.05} ¿Cuanto vale el rango de la matriz $A$?
+  \item \label{parte3.06} Determina si esta matriz es definida positiva, semidefinida positiva o si no lo es.
+\end{enumerate}
+
+---
+
+\begin{thebibliography}{99}
+  \bibitem{friedberg}
+      Friedberg, Stephen H., Insel, Arnold J., and Spence, Lawrence E.,
+      \emph{Linear algebra},
+      4th. ed.,
+      Prentice Hall,
+      2002.
+      
+\end{thebibliography}
