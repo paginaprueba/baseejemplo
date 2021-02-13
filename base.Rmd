@@ -1,14 +1,12 @@
 ---
 # Preámbulo con paquetes y definiciones básicas
 # Se incluyen los comandos mínimos de LaTeX
-#title: Tarea 0N\\ Materia
+#title: Mi título
 author:
- - Adriana Haydeé Contreras Peruyero\and
- - Alejandro Jiménez Palestino\and
- - Andrés Peña Montalvo\and
- - Arturo Sánchez González\and
- - Jesus Alberto Urrutia Camacho
+ - Fulanito\and
+ - Perenganito
 header-includes:
+# Estos son paquetes de LaTeX que uso habitualmente
   - \usepackage{array}
   - \usepackage{booktabs}
   - \usepackage{amsmath}
@@ -30,20 +28,6 @@ header-includes:
 output: pdf_document
 ---
 
-<!-- El siguiente código sirve para poner el logo del encabezado. -->
-\pagestyle{fancy}
-\fancyhf{}
-
-\rhead{\begin{picture}(0,0) 
-\put(-40,-20)
-{\includegraphics[width=30mm]
-{images/iimas}} 
-\end{picture}}
-
-\renewcommand{\headrulewidth}{0pt}
-\rfoot[\thepage]{\vspace{-0.5cm} \thepage}
-
-
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
@@ -55,19 +39,6 @@ knitr::opts_chunk$set(echo = TRUE)
 # Es BUENA PRÁCTICA poner las librerías al principio, por ello las ponemos aquí
 # library(library_name)
 ```
-
-
- \begin{center}
- \bigskip 
- \textbf{\Large Tarea 0N \\ Materia}
- \end{center}
- 
- - Adriana Haydeé Contreras Peruyero\and
- - Alejandro Jiménez Palestino\and
- - Andrés Peña Montalvo\and
- - Arturo Sánchez González\and
- - Jesus Alberto Urrutia Camacho
-
 
 # Aquí va todo el contenido
 
