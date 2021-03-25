@@ -34,23 +34,40 @@ Una de las ventajas de usar esta herramienta es la posibilidad de tener control 
   Este paso lo hacemos para evitar problemas cuando haya cambios en la rama principal `main`. De preferencia, realizamos esta acción cada vez que iniciamos un nuevo proyecto. Para evitar errores más adelane, el nombre de nuestra rama no debe contener símbolos especiales, ni puntos, ni acentos ni espacios: se sugiere usar un nombre del tipo `rama_local` o bien `RamaLocal`.
   
   5. Realizamos todas las acciones y actualizaciones dentro de esta rama local.
-  6. Pinchamos a ``Commit``dentro de la pestaña *Git* y escribimos los comentarios necesarios para explicar nuestro trabajo realizado en la ventana que se abre. Debemos asegurarnos de _seleccionar_ solo los archivos que deseemos actualizar.
+  6.  Para hacer `commit` de los cambios realizados tenemos dos opciones.
+ 
+      - La primera es hacerlo mediante la interfaz: Pinchamos a `Commit` dentro de la pestaña *Git* y escribimos los comentarios necesarios para explicar nuestro trabajo realizado en la ventana que se abre. Debemos asegurarnos de _seleccionar_ solo los archivos que deseemos actualizar.
+      - La segunda opción es hacerlo mediante línea de comandos. Esto puede ser más rápido cuando hay muchos cambios. Para ello, en el menú `Tools -> Shell` abrimos una consola. En ella, primero escribimos
+        ```
+        git add .
+        ```
+       y damos enter para agregar todos los cambios. También se puede escribir el nombre de cada archivo cuyos cambios queremos añadir en lugar del punto, para ello escribiríamos un comando del tipo
+       ```
+       git add nuevo_archivo.pdf
+       ```
+       
+       A continuación, describimos en qué consisten los cambios realizados (el `commit` propiamente) y para ello usamos el siguiente comando
+       ```
+       git commit -m "Mensaje de ejemplo"
+       ```
+       
   7. Junto al nombre de nuestra rama local `rama_local` en la pestaña *Git* aparece un triángulo que apunta hacia abajo, lo pinchamos y cambiamos a la rama principal `main`. Esto nos abrirá un mensaje que, si no hay errores, indicará que hemos cambiado a la rama principal.
-  8. Nuevamente hacemos _pull_ porque podría haber actualizaciones realizadas por otro colaborador.
-  9. En caso de que las haya actualizaciones después de _descargar_ la última versión del repositorio, nuevamente hacemos ``Commit``. Note que estamos en la rama principal `main` del proyecto
-  10. Abrimos una consola a partir del menú `Tools -> Shell`.
-  11. En la consola escribimos el siguiente comando
+  8. Abrimos una consola a partir del menú `Tools -> Shell`.
+  9. Nuevamente hacemos _pull_ porque podría haber actualizaciones realizadas por otro colaborador. Para ello escribimos `git pull` en la consola que abrimos, o bien, pinchamos en la flecha verde que apunta hacia abajo (que dice `Pull`) de la pestaña `Git`.
+  10. En la consola escribimos el siguiente comando
   ```
   git merge rama_local
   ```
   donde `rama_local` es el nombre que le asignamos a la rama local en la cual trabajamos. Esto se hace para _combinar_ nuestro trabajo local con la rama principal `main` antes de subir nuestras actualizaciones al repositorio. Ya podemos cerrar la consola.
   
-  12. A continuación, hacemos _push_ de nuestro trabajo. Esto se logra pinchando la flecha verde que apunta hacia arriba. Esto termina la actualización del repositorio.
-  13. Eliminamos la rama local al escribir en la consola el siguiente comando
+  11. En caso de que haya actualizaciones después de _descargar_ la última versión del repositorio y de hacer `merge`, nuevamente hacemos ``Commit`` (ver Paso 6.) de los cambios que se hayan producido (también corregimos lo qe sea necesario). Note que estamos en la rama principal `main` del proyecto.
+
+  12. A continuación, hacemos _push_ de nuestro trabajo. Esto se logra ejecutando en la consola el comando `git push`, o bien, pinchando la flecha verde que apunta hacia arriba (que dice `Push`) en la pestaña `Git`. Esto termina la actualización del repositorio.
+  13. Eliminamos la rama local ejecutando en la consola el siguiente comando
   ```
   git branch -d rama_local
   ```
-  Una vez hecho esto, cerramos la consola. Hacemos esto porque en la rama local se guardan los cambios y si por alguna actualización descargada en el paso 8 no coinciden con lo obtenido en la rama principal después del paso 12, podríamos obtener versiones no compatibles y generar errores en la versión final.
+  Una vez hecho esto, cerramos la consola. Hacemos esto porque en la rama local se guardan los cambios y si por alguna actualización descargada en el paso 9 no coinciden con lo obtenido en la rama principal después del paso 12, podríamos obtener versiones no compatibles y generar errores en la versión final.
   
   14. Para concluir, cerramos el proyecto desde `File -> Close Project` antes de cerrar RStudio para evitar errores al cargar la interfaz en una próxima ocasión.
   15. Cuando reabra el proyecto una próxima vez, repita a partir del paso 4 para asegurar el mejor desempeño.
